@@ -18,7 +18,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 camera.position.z = 30;
 
 const house = new House();
-scene.add(house)
+scene.add(house.group);
 
 function animate() {
 	requestAnimationFrame( animate );
