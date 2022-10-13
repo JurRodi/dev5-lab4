@@ -71,22 +71,28 @@ export default class House {
     }
     
     createWindows() {
+        const glassTexture = new THREE.TextureLoader().load('textures/glas.jpg');
         const windows = new THREE.Group();
-        const window = new THREE.Mesh(
-            new THREE.PlaneGeometry(1.5, 1.5),
-            new THREE.MeshStandardMaterial({ color: 0x156289 })
+        const frontWindow = new THREE.Mesh(
+            new THREE.PlaneGeometry(1.2, 4.9),
+            new THREE.MeshStandardMaterial({ color: 0x6fa8dc })
         );
-        const windowFrame = new THREE.Mesh(
-            new THREE.PlaneGeometry(1.6, 1.6),
+        const frontWindowFrame = new THREE.Mesh(
+            new THREE.PlaneGeometry(1.3, 5),
             new THREE.MeshStandardMaterial({ color: 0x000000 })
         );
-        windowFrame.position.z = 0.05;
-        window.position.z = 0.1;
-        windows.add(windowFrame);
-        windows.add(window);
-        windows.position.x = -1.5;
-        windows.position.z = 3.7;
-        windows.position.y = 1.5;
+        frontWindowFrame.position.z = 0.05;
+        frontWindow.position.z = 0.1;
+        
+        windows.position.set(-2, 2.5, 3.7);
+
+        windows.add(frontWindowFrame);
+        windows.add(frontWindow);
+
+        for (let i = 0; i < windows.children.length; i++) {
+            windows.children[i].material.map = glassTexture;
+        }
+
         this.group.add(windows);
     }
 }
