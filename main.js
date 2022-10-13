@@ -15,7 +15,8 @@ scene.add(ambientLight);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-camera.position.z = 30;
+camera.position.z = 15;
+camera.position.y = 2;
 
 const house = new House();
 scene.add(house.group);
