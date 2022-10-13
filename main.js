@@ -21,6 +21,9 @@ camera.position.y = 2;
 const house = new House();
 scene.add(house.group);
 
+const surrounding = new Surrounding();
+scene.add(surrounding.group);
+
 function animate() {
 	requestAnimationFrame( animate );
   controls.update();
