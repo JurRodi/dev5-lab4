@@ -49,4 +49,14 @@ export default class House {
         }
         this.group.add(walls);
     }
+
+    createRoof() {
+        const roof = new THREE.Mesh(
+            new THREE.ConeGeometry(7, 3, 4),
+            new THREE.MeshStandardMaterial({ color: 0x333333 })
+        );
+        roof.rotation.y = Math.PI / 4;
+        roof.position.y = 6.5;
+        this.group.add(roof);
+    }
 }
