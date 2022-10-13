@@ -59,4 +59,14 @@ export default class House {
         roof.position.y = 6.5;
         this.group.add(roof);
     }
+
+    createDoor() {
+        const door = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 2, 0.1),
+            new THREE.MeshStandardMaterial({ color: 0x823c08 })
+        );
+        door.position.z = 3.7;
+        door.position.y = 1;
+        this.group.add(door);
+    }    
 }
