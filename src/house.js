@@ -68,5 +68,25 @@ export default class House {
         door.position.z = 3.7;
         door.position.y = 1;
         this.group.add(door);
-    }    
+    }
+    
+    createWindows() {
+        const windows = new THREE.Group();
+        const window = new THREE.Mesh(
+            new THREE.PlaneGeometry(1.5, 1.5),
+            new THREE.MeshStandardMaterial({ color: 0x156289 })
+        );
+        const windowFrame = new THREE.Mesh(
+            new THREE.PlaneGeometry(1.6, 1.6),
+            new THREE.MeshStandardMaterial({ color: 0x000000 })
+        );
+        windowFrame.position.z = 0.05;
+        window.position.z = 0.1;
+        windows.add(windowFrame);
+        windows.add(window);
+        windows.position.x = -1.5;
+        windows.position.z = 3.7;
+        windows.position.y = 1.5;
+        this.group.add(windows);
+    }
 }
