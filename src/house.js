@@ -1,4 +1,6 @@
 import * as THREE from 'three'
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 
 export default class House {
     constructor() {
@@ -7,6 +9,7 @@ export default class House {
         this.createRoof();
         this.createDoor();
         this.createWindows();
+        this.createNameBord();
     }
 
     createWalls() {
@@ -119,5 +122,33 @@ export default class House {
         }
 
         this.group.add(windows);
+    }
+
+    createNameBord() {
+        const nameBord = new THREE.Group();
+        const whiteBord = new THREE.Mesh(
+            new THREE.PlaneGeometry(2, 1),
+            new THREE.MeshStandardMaterial({ color: 0xffffff })
+        );
+        whiteBord.position.set(0, 2.8, 3.7);
+        nameBord.add(whiteBord);
+
+        const loader = new FontLoader();
+        loader.load('node_modules/three/examples/fonts/helvetiker_regular.typeface.json', (font) => {
+            const textGeometry = new TextGeometry('Jur', {
+                font: font,
+                size: 0.7,
+                height: 0.1,
+                curveSegments: 12,
+                bevelEnabled: false,
+            });
+            const textMaterial = new THREE.MeshStandardMaterial({ color: 0x000000 });
+            const text = new THREE.Mesh(textGeometry, textMaterial);
+            text.position.set(-0.6, 2.5, 3.7);
+            nameBord.add(text);
+        });
+
+        this.group.add(nameBord);
+        console.log(nameBord);
     }
 }
