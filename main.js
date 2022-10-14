@@ -26,17 +26,25 @@ scene.add(house.group);
 const surrounding = new Surrounding();
 scene.add(surrounding.group);
 
+
+let trees = [];
 for (let i = 0; i < 35; i++) {
   const x = Math.random() * 80 - 40;
   const z = Math.random() * 80 - 40;
   if (x > 10 || x < -10 || z > 10 || z < -10) {
     const tree = new Tree(x, z);
     scene.add(tree.group);
+    trees.push(tree);
   }
 }
 
 function animate() {
 	requestAnimationFrame( animate );
+  
+  trees.forEach(tree => {
+    tree.group.rotation.y += 0.01;
+  })
+
   controls.update();
 	renderer.render( scene, camera );
 }
