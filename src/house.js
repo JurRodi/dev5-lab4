@@ -134,7 +134,7 @@ export default class House {
         nameBord.add(whiteBord);
 
         const loader = new FontLoader();
-        loader.load('node_modules/three/examples/fonts/helvetiker_regular.typeface.json', (font) => {
+        loader.load('fonts/helvetiker_regular.typeface.json', (font) => {
             const textGeometry = new TextGeometry('Jur', {
                 font: font,
                 size: 0.7,
