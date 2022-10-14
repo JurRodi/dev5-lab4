@@ -97,8 +97,22 @@ export default class House {
         rightWindow.rotation.y = Math.PI / 2;
         rightWindowFrame.rotation.y = Math.PI / 2;
 
+        const leftWindow = new THREE.Mesh(
+            new THREE.PlaneGeometry(3.9, 1.2),
+            new THREE.MeshStandardMaterial({ color: 0x6fa8dc })
+        );
+        const leftWindowFrame = new THREE.Mesh(
+            new THREE.PlaneGeometry(4, 1.3),
+            new THREE.MeshStandardMaterial({ color: 0x000000 })
+        );
+        leftWindow.position.set(-3.55, 4, -1.6);
+        leftWindowFrame.position.set(-3.5, 4, -1.6);
+        leftWindow.rotation.y = -Math.PI / 2;
+        leftWindowFrame.rotation.y = -Math.PI / 2;
+
         windows.add(frontWindow, frontWindowFrame);
         windows.add(rightWindow, rightWindowFrame);
+        windows.add(leftWindow, leftWindowFrame);
 
         for (let i = 0; i < windows.children.length; i++) {
             windows.children[i].material.map = glassTexture;
